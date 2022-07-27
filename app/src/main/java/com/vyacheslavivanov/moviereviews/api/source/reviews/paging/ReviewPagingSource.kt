@@ -1,4 +1,4 @@
-package com.vyacheslavivanov.moviereviews.api.source.reviews
+package com.vyacheslavivanov.moviereviews.api.source.reviews.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

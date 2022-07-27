@@ -1,8 +1,9 @@
-package com.vyacheslavivanov.moviereviews.api.source.reviews
+package com.vyacheslavivanov.moviereviews.api.source.reviews.paging
 
 import androidx.paging.PagingState
 import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListRequest
 import com.vyacheslavivanov.moviereviews.api.mappers.toDomain
+import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSource
 import com.vyacheslavivanov.moviereviews.api.util.foldLogging
 import com.vyacheslavivanov.moviereviews.data.reviews.Review
 import javax.inject.Inject
