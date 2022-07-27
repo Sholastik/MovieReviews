@@ -10,6 +10,6 @@ import javax.inject.Inject
 class ReviewsSourceImpl @Inject constructor(
     private val reviewsService: ReviewsService
 ) : ReviewsSource() {
-    override suspend fun getReviewList(reviewListRequest: ReviewListRequest): Result<ReviewListResponse> =
+    override suspend fun fetchReviewList(reviewListRequest: ReviewListRequest): Result<ReviewListResponse> =
         reviewsService.fetchReviewList(reviewListRequest.toQueryMap()).fold()
 }
