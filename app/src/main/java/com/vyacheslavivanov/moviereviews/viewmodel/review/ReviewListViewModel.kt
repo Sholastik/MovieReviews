@@ -15,7 +15,7 @@ class ReviewListViewModel @Inject constructor(
 ) : ViewModel() {
     val reviewFlow = Pager(
         config = PagingConfig(
-            pageSize = PagingConfig.MAX_SIZE_UNBOUNDED,
+            pageSize = PAGE_SIZE,
             enablePlaceholders = false
         ),
         pagingSourceFactory = {
@@ -24,4 +24,8 @@ class ReviewListViewModel @Inject constructor(
     )
         .flow
         .cachedIn(viewModelScope)
+
+    companion object {
+        private const val PAGE_SIZE = 25
+    }
 }
