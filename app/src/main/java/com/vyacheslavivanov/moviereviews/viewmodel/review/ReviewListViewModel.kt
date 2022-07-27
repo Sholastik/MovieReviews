@@ -19,7 +19,7 @@ class ReviewListViewModel @Inject constructor(
             enablePlaceholders = false
         ),
         pagingSourceFactory = {
-            reviewRepository.pagingSource
+            reviewRepository.createPagingSource()
         }
     )
         .flow
