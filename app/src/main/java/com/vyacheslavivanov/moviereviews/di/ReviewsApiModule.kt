@@ -7,6 +7,8 @@ import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Qualifier
 
 @Module
@@ -29,4 +31,17 @@ object ReviewsApiModule {
                         .build()
                 )
             }.build()
+
+    @ReviewsApi
+    @Provides
+    @Reusable
+    fun provideRetrofit(
+        @ReviewsApi okHttpClient: OkHttpClient
+    ): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.REVIEWS_API_URL)
+            .client(okHttpClient)
+            .addConverterFactory(
+                MoshiConverterFactory.create()
+            ).build()
 }
