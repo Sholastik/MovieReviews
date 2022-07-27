@@ -2,6 +2,9 @@ package com.vyacheslavivanov.moviereviews.di
 
 import com.vyacheslavivanov.moviereviews.BuildConfig
 import com.vyacheslavivanov.moviereviews.api.service.reviews.ReviewsService
+import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSource
+import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSourceImpl
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -54,4 +57,11 @@ abstract class ReviewsApiModule {
         @ReviewsApi retrofit: Retrofit
     ): ReviewsService =
         retrofit.create()
+
+    @ReviewsApi
+    @Binds
+    @Reusable
+    abstract fun bindReviewsSource(
+        reviewsSourceImpl: ReviewsSourceImpl
+    ): ReviewsSource
 }
