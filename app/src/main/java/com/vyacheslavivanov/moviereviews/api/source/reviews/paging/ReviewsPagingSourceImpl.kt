@@ -8,9 +8,9 @@ import com.vyacheslavivanov.moviereviews.api.util.foldLogging
 import com.vyacheslavivanov.moviereviews.data.reviews.Review
 import javax.inject.Inject
 
-class ReviewPagingSourceImpl @Inject constructor(
+class ReviewsPagingSourceImpl @Inject constructor(
     private val reviewsSource: ReviewsSource
-) : ReviewPagingSource() {
+) : ReviewsPagingSource() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Review> {
         val offset = params.key ?: STARTING_KEY
 
