@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/reviewListFragment"
-        android:name="com.vyacheslavivanov.moviereviews.ui.reviewlist.ReviewListFragment"
+        android:name="com.vyacheslavivanov.moviereviews.ui.reviews.ReviewListFragment"
         android:label="ReviewListFragment" />
 </navigation>

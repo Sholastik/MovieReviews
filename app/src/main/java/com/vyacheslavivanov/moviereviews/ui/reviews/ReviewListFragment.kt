@@ -1,4 +1,4 @@
-package com.vyacheslavivanov.moviereviews.ui.reviewlist
+package com.vyacheslavivanov.moviereviews.ui.reviews
 
 import android.os.Bundle
 import android.view.LayoutInflater
