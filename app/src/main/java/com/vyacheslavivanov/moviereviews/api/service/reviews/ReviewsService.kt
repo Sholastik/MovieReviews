@@ -5,7 +5,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
-interface ReviewService {
+interface ReviewsService {
     @GET("/reviews/all.json")
     suspend fun fetchReviewList(@QueryMap queryMap: Map<String, Any>): Response<ReviewListResponse>
 }
