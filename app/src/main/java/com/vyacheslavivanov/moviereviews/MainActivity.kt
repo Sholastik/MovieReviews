@@ -1,11 +1,11 @@
 package com.vyacheslavivanov.moviereviews
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.FragmentActivity
 import com.vyacheslavivanov.moviereviews.databinding.ActivityMainBinding
 
-class MainActivity : Activity() {
+class MainActivity : FragmentActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
