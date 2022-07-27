@@ -15,7 +15,7 @@ fun ReviewListResponse.toDomain(): ReviewList =
 
 fun ReviewResponse.toDomain(): Review =
     Review(
-        title = title,
+        title = title.ifBlank { "No title" },
         ageRating = ageRating,
         isCriticsPick = isCriticsPick == 1,
         author = author,
