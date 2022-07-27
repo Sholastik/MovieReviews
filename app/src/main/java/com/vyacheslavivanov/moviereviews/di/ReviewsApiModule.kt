@@ -4,6 +4,8 @@ import com.vyacheslavivanov.moviereviews.BuildConfig
 import com.vyacheslavivanov.moviereviews.api.service.reviews.ReviewsService
 import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSource
 import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSourceImpl
+import com.vyacheslavivanov.moviereviews.api.source.reviews.paging.ReviewsPagingSource
+import com.vyacheslavivanov.moviereviews.api.source.reviews.paging.ReviewsPagingSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -64,4 +66,11 @@ abstract class ReviewsApiModule {
     abstract fun bindReviewsSource(
         reviewsSourceImpl: ReviewsSourceImpl
     ): ReviewsSource
+
+    @ReviewsApi
+    @Binds
+    @Reusable
+    abstract fun bindReviewsPagingSource(
+        reviewsPagingSourceImpl: ReviewsPagingSourceImpl
+    ): ReviewsPagingSource
 }
