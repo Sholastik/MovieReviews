@@ -1,5 +1,7 @@
 package com.vyacheslavivanov.moviereviews.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.vyacheslavivanov.moviereviews.BuildConfig
 import com.vyacheslavivanov.moviereviews.api.service.review.ReviewService
 import com.vyacheslavivanov.moviereviews.api.source.review.ReviewSource
@@ -67,7 +69,11 @@ abstract class ReviewApiModule {
                 .baseUrl(BuildConfig.REVIEWS_API_URL)
                 .client(okHttpClient)
                 .addConverterFactory(
-                    MoshiConverterFactory.create()
+                    MoshiConverterFactory.create(
+                        Moshi.Builder()
+                            .add(KotlinJsonAdapterFactory())
+                            .build()
+                    )
                 ).build()
 
         @ReviewApi
