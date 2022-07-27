@@ -11,6 +11,7 @@ import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -37,7 +38,7 @@ abstract class ReviewApiModule {
         fun provideOkHttpClient(): OkHttpClient =
             OkHttpClient.Builder()
                 .addInterceptor {
-                    val newUrl = it.request().url()
+                    val newUrl = it.request().url
                         .newBuilder()
                         .addQueryParameter(
                             "api-key", BuildConfig.API_KEY
@@ -49,6 +50,11 @@ abstract class ReviewApiModule {
                             .url(newUrl)
                             .build()
                     )
+                }.apply {
+                    if (BuildConfig.DEBUG) {
+                        addInterceptor(HttpLoggingInterceptor()
+                            .apply { level = HttpLoggingInterceptor.Level.BODY })
+                    }
                 }.build()
 
         @ReviewApi
