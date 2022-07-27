@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movie Reviews</string>
+    <string name="error_snackbar_title">Retry</string>
+    <string name="review_author_format">By: %s</string>
 </resources>
