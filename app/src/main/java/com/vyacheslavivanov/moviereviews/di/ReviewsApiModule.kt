@@ -26,41 +26,6 @@ abstract class ReviewsApiModule {
     internal annotation class ReviewsApi
 
     @ReviewsApi
-    @Provides
-    @Reusable
-    fun provideOkHttpClient(): OkHttpClient =
-        OkHttpClient.Builder()
-            .addInterceptor {
-                it.proceed(
-                    it.request()
-                        .newBuilder()
-                        .header("api-key", BuildConfig.API_KEY)
-                        .build()
-                )
-            }.build()
-
-    @ReviewsApi
-    @Provides
-    @Reusable
-    fun provideRetrofit(
-        @ReviewsApi okHttpClient: OkHttpClient
-    ): Retrofit =
-        Retrofit.Builder()
-            .baseUrl(BuildConfig.REVIEWS_API_URL)
-            .client(okHttpClient)
-            .addConverterFactory(
-                MoshiConverterFactory.create()
-            ).build()
-
-    @ReviewsApi
-    @Provides
-    @Reusable
-    fun provideReviewsService(
-        @ReviewsApi retrofit: Retrofit
-    ): ReviewsService =
-        retrofit.create()
-
-    @ReviewsApi
     @Binds
     @Reusable
     abstract fun bindReviewsSource(
@@ -73,4 +38,41 @@ abstract class ReviewsApiModule {
     abstract fun bindReviewsPagingSource(
         reviewsPagingSourceImpl: ReviewsPagingSourceImpl
     ): ReviewsPagingSource
+
+    companion object {
+        @ReviewsApi
+        @Provides
+        @Reusable
+        fun provideOkHttpClient(): OkHttpClient =
+            OkHttpClient.Builder()
+                .addInterceptor {
+                    it.proceed(
+                        it.request()
+                            .newBuilder()
+                            .header("api-key", BuildConfig.API_KEY)
+                            .build()
+                    )
+                }.build()
+
+        @ReviewsApi
+        @Provides
+        @Reusable
+        fun provideRetrofit(
+            @ReviewsApi okHttpClient: OkHttpClient
+        ): Retrofit =
+            Retrofit.Builder()
+                .baseUrl(BuildConfig.REVIEWS_API_URL)
+                .client(okHttpClient)
+                .addConverterFactory(
+                    MoshiConverterFactory.create()
+                ).build()
+
+        @ReviewsApi
+        @Provides
+        @Reusable
+        fun provideReviewsService(
+            @ReviewsApi retrofit: Retrofit
+        ): ReviewsService =
+            retrofit.create()
+    }
 }
