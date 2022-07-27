@@ -1,4 +1,4 @@
-package com.vyacheslavivanov.moviereviews.service.dto.reviews
+package com.vyacheslavivanov.moviereviews.api.dto.reviews
 
 import com.squareup.moshi.Json
 
