@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.vyacheslavivanov.moviereviews.databinding.FragmentReviewListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReviewListFragment : Fragment() {
     private lateinit var binding: FragmentReviewListBinding
 
