@@ -4,10 +4,15 @@ import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListRequest
 import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListResponse
 import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewResponse
 import com.vyacheslavivanov.moviereviews.data.reviews.Review
+import com.vyacheslavivanov.moviereviews.data.reviews.ReviewList
 
-fun ReviewListResponse.toDomain(): List<Review> = mapList(reviewList) {
-    it.toDomain()
-}
+fun ReviewListResponse.toDomain(): ReviewList =
+    ReviewList(
+        mapList(reviewList) {
+            it.toDomain()
+        },
+        hasMore
+    )
 
 fun ReviewResponse.toDomain(): Review =
     Review(
