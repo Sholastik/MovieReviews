@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 val versionMajor = 1
@@ -50,6 +52,10 @@ android {
         viewBinding = true
     }
 
+    kapt {
+        correctErrorTypes = true
+    }
+
     kotlinOptions {
         jvmTarget = "17"
     }
@@ -64,6 +70,9 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.1")
+
+    implementation("com.google.dagger:hilt-android:2.43")
+    kapt("com.google.dagger:hilt-android-compiler:2.43")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
