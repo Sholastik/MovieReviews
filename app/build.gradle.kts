@@ -101,6 +101,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation("com.squareup.picasso:picasso:2.8")
+    implementation("jp.wasabeef:picasso-transformations:2.4.0")
     implementation("androidx.paging:paging-runtime:3.1.1")
 
     implementation("com.jakewharton.timber:timber:5.0.1")
