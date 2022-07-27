@@ -30,6 +30,17 @@ android {
 
     buildTypes {
         getByName("release") {
+            buildConfigField(
+                "String",
+                "REVIEWS_API_URL",
+                "\"https://api.nytimes.com/svc/movies/v2/\""
+            )
+            buildConfigField(
+                "String",
+                "API_KEY",
+                "\"iAr7Gvi8E4PvX3HD0DNwVNh5D7qXwg9h\""
+            ) // I acknowledge that I commit api key to a public repository
+
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -38,6 +49,17 @@ android {
         }
 
         getByName("debug") {
+            buildConfigField(
+                "String",
+                "REVIEWS_API_URL",
+                "\"https://api.nytimes.com/svc/movies/v2/\""
+            )
+            buildConfigField(
+                "String",
+                "API_KEY",
+                "\"iAr7Gvi8E4PvX3HD0DNwVNh5D7qXwg9h\""
+            ) // I acknowledge that I commit api key to a public repository
+
             ext["alwaysUpdateBuildId"] = false
         }
     }
