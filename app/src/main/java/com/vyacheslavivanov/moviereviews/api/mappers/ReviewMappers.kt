@@ -1,6 +1,5 @@
 package com.vyacheslavivanov.moviereviews.api.mappers
 
-import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewListRequest
 import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewListResponse
 import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewResponse
 import com.vyacheslavivanov.moviereviews.data.review.Review
@@ -25,9 +24,4 @@ fun ReviewResponse.toDomain(): Review =
         dateCreated = dateCreated,
         linkUrl = link.url,
         thumbnailUrl = image.src
-    )
-
-fun ReviewListRequest.toQueryMap(): Map<String, Any> =
-    mapOf(
-        "offset" to offset
     )
