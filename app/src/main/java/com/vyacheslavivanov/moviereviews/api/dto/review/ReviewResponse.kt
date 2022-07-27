@@ -1,7 +1,9 @@
 package com.vyacheslavivanov.moviereviews.api.dto.review
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class ReviewResponse(
     @Json(name = "display_title") val title: String,
     @Json(name = "mpaa_rating") val ageRating: String,
@@ -15,11 +17,13 @@ data class ReviewResponse(
     @Json(name = "link") val link: Link,
     @Json(name = "multimedia") val image: Image
 ) {
+    @JsonClass(generateAdapter = true)
     data class Link(
         @Json(name = "url") val url: String,
         @Json(name = "suggested_link_text") val linkText: String
     )
 
+    @JsonClass(generateAdapter = true)
     data class Image(
         @Json(name = "src") val src: String
     )
