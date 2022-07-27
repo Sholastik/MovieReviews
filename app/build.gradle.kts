@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.vyacheslavivanov.moviereviews"
 
-        minSdk = 21
+        minSdk = 23
         targetSdk = 32
 
         versionCode = versionMajor * 10000 + versionMinor * 100 + versionPatch
