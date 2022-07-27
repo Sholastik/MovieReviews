@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -17,13 +17,13 @@ import retrofit2.create
 import javax.inject.Qualifier
 
 @Module
-@InstallIn(FragmentComponent::class)
+@InstallIn(ViewModelComponent::class)
 abstract class ReviewApiModule {
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
-    internal annotation class ReviewsApi
+    internal annotation class ReviewApi
 
-    @ReviewsApi
+    @ReviewApi
     @Binds
     @Reusable
     abstract fun bindReviewSource(
@@ -31,7 +31,7 @@ abstract class ReviewApiModule {
     ): ReviewSource
 
     companion object {
-        @ReviewsApi
+        @ReviewApi
         @Provides
         @Reusable
         fun provideOkHttpClient(): OkHttpClient =
@@ -45,11 +45,11 @@ abstract class ReviewApiModule {
                     )
                 }.build()
 
-        @ReviewsApi
+        @ReviewApi
         @Provides
         @Reusable
         fun provideRetrofit(
-            @ReviewsApi okHttpClient: OkHttpClient
+            @ReviewApi okHttpClient: OkHttpClient
         ): Retrofit =
             Retrofit.Builder()
                 .baseUrl(BuildConfig.REVIEWS_API_URL)
@@ -58,11 +58,11 @@ abstract class ReviewApiModule {
                     MoshiConverterFactory.create()
                 ).build()
 
-        @ReviewsApi
+        @ReviewApi
         @Provides
         @Reusable
         fun provideReviewsService(
-            @ReviewsApi retrofit: Retrofit
+            @ReviewApi retrofit: Retrofit
         ): ReviewService =
             retrofit.create()
     }
