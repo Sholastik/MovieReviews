@@ -1,6 +1,7 @@
 package com.vyacheslavivanov.moviereviews.di
 
 import com.vyacheslavivanov.moviereviews.BuildConfig
+import com.vyacheslavivanov.moviereviews.api.service.reviews.ReviewsService
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -9,6 +10,7 @@ import dagger.hilt.android.components.ViewModelComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Qualifier
 
 @Module
@@ -44,4 +46,12 @@ object ReviewsApiModule {
             .addConverterFactory(
                 MoshiConverterFactory.create()
             ).build()
+
+    @ReviewsApi
+    @Provides
+    @Reusable
+    fun provideReviewsService(
+        @ReviewsApi retrofit: Retrofit
+    ): ReviewsService =
+        retrofit.create()
 }
