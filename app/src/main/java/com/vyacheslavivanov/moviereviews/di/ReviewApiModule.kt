@@ -37,10 +37,16 @@ abstract class ReviewApiModule {
         fun provideOkHttpClient(): OkHttpClient =
             OkHttpClient.Builder()
                 .addInterceptor {
+                    val newUrl = it.request().url()
+                        .newBuilder()
+                        .addQueryParameter(
+                            "api-key", BuildConfig.API_KEY
+                        ).build()
+
                     it.proceed(
                         it.request()
                             .newBuilder()
-                            .header("api-key", BuildConfig.API_KEY)
+                            .url(newUrl)
                             .build()
                     )
                 }.build()
