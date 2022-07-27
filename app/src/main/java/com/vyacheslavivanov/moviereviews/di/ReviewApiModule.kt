@@ -1,11 +1,11 @@
 package com.vyacheslavivanov.moviereviews.di
 
 import com.vyacheslavivanov.moviereviews.BuildConfig
-import com.vyacheslavivanov.moviereviews.api.service.reviews.ReviewsService
-import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSource
-import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSourceImpl
-import com.vyacheslavivanov.moviereviews.api.source.reviews.paging.ReviewsPagingSource
-import com.vyacheslavivanov.moviereviews.api.source.reviews.paging.ReviewsPagingSourceImpl
+import com.vyacheslavivanov.moviereviews.api.service.review.ReviewService
+import com.vyacheslavivanov.moviereviews.api.source.review.ReviewSource
+import com.vyacheslavivanov.moviereviews.api.source.review.ReviewSourceImpl
+import com.vyacheslavivanov.moviereviews.api.source.review.paging.ReviewPagingSource
+import com.vyacheslavivanov.moviereviews.api.source.review.paging.ReviewPagingSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,7 +20,7 @@ import javax.inject.Qualifier
 
 @Module
 @InstallIn(FragmentComponent::class)
-abstract class ReviewsApiModule {
+abstract class ReviewApiModule {
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
     internal annotation class ReviewsApi
@@ -28,16 +28,16 @@ abstract class ReviewsApiModule {
     @ReviewsApi
     @Binds
     @Reusable
-    abstract fun bindReviewsSource(
-        reviewsSourceImpl: ReviewsSourceImpl
-    ): ReviewsSource
+    abstract fun bindReviewSource(
+        reviewSourceImpl: ReviewSourceImpl
+    ): ReviewSource
 
     @ReviewsApi
     @Binds
     @Reusable
-    abstract fun bindReviewsPagingSource(
-        reviewsPagingSourceImpl: ReviewsPagingSourceImpl
-    ): ReviewsPagingSource
+    abstract fun bindReviewPagingSource(
+        reviewPagingSourceImpl: ReviewPagingSourceImpl
+    ): ReviewPagingSource
 
     companion object {
         @ReviewsApi
@@ -72,7 +72,7 @@ abstract class ReviewsApiModule {
         @Reusable
         fun provideReviewsService(
             @ReviewsApi retrofit: Retrofit
-        ): ReviewsService =
+        ): ReviewService =
             retrofit.create()
     }
 }

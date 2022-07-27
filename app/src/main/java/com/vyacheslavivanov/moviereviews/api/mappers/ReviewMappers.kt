@@ -1,10 +1,10 @@
 package com.vyacheslavivanov.moviereviews.api.mappers
 
-import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListRequest
-import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListResponse
-import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewResponse
-import com.vyacheslavivanov.moviereviews.data.reviews.Review
-import com.vyacheslavivanov.moviereviews.data.reviews.ReviewList
+import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewListRequest
+import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewListResponse
+import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewResponse
+import com.vyacheslavivanov.moviereviews.data.review.Review
+import com.vyacheslavivanov.moviereviews.data.review.ReviewList
 
 fun ReviewListResponse.toDomain(): ReviewList =
     ReviewList(

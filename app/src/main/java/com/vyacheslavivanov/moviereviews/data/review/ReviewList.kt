@@ -1,4 +1,4 @@
-package com.vyacheslavivanov.moviereviews.data.reviews
+package com.vyacheslavivanov.moviereviews.data.review
 
 data class ReviewList(
     val reviewList: List<Review>,

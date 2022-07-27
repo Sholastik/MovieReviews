@@ -1,20 +1,20 @@
-package com.vyacheslavivanov.moviereviews.api.source.reviews.paging
+package com.vyacheslavivanov.moviereviews.api.source.review.paging
 
 import androidx.paging.PagingState
-import com.vyacheslavivanov.moviereviews.api.dto.reviews.ReviewListRequest
+import com.vyacheslavivanov.moviereviews.api.dto.review.ReviewListRequest
 import com.vyacheslavivanov.moviereviews.api.mappers.toDomain
-import com.vyacheslavivanov.moviereviews.api.source.reviews.ReviewsSource
+import com.vyacheslavivanov.moviereviews.api.source.review.ReviewSource
 import com.vyacheslavivanov.moviereviews.api.util.foldLogging
-import com.vyacheslavivanov.moviereviews.data.reviews.Review
+import com.vyacheslavivanov.moviereviews.data.review.Review
 import javax.inject.Inject
 
-class ReviewsPagingSourceImpl @Inject constructor(
-    private val reviewsSource: ReviewsSource
-) : ReviewsPagingSource() {
+class ReviewPagingSourceImpl @Inject constructor(
+    private val reviewSource: ReviewSource
+) : ReviewPagingSource() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Review> {
         val offset = params.key ?: STARTING_KEY
 
-        val result = reviewsSource.fetchReviewList(
+        val result = reviewSource.fetchReviewList(
             ReviewListRequest(offset = offset)
         ).foldLogging {
             toDomain()

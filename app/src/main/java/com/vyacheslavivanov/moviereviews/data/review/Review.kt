@@ -1,4 +1,4 @@
-package com.vyacheslavivanov.moviereviews.data.reviews
+package com.vyacheslavivanov.moviereviews.data.review
 
 data class Review(
     val title: String,
